@@ -97,7 +97,6 @@ if (clientID && clientSecret) {
                 port: parseInt(process.env.LAVALINK_PORT) || 80,
                 password: process.env.LAVALINK_PASSWORD || "CorwinDev",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false,
-                identifier: process.env.LAVALINK_ID
             },
         ],
         send(id, payload) {
@@ -108,6 +107,7 @@ if (clientID && clientSecret) {
 }
 const events = fs.readdirSync(`./src/events/music`).filter(files => files.endsWith('.js'));
 
+//music events once music is selected
 for (const file of events) {
     const event = require(`./events/music/${file}`);
     client.player.on(file.split(".")[0], event.bind(null, client)).setMaxListeners(0);
