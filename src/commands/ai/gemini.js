@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const MODEL_NAME = "gemini-pro";
 module.exports = async (client, interaction, args) => {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
     const prompt = interaction.options.getString('message');
 
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
